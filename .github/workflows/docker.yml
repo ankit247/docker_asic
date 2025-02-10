@@ -16,10 +16,10 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD ghcr.io
       - name: docker build
         run: |
-          docker build ./ -t ankit247/ubuntu_asic:1.0.0
+          docker build ./ -t ghcr.io/ankit247/ubuntu_asic:1.0.0 
       - name: docker push
         run: |
-          docker push ankit247/ubuntu_asic:1.0.0
+          docker push ghcr.io/ankit247/ubuntu_asic:1.0.0
