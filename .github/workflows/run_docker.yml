@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: docker login
+        run: |
+          docker login -u ankit247 -p ${{ secrets.GH_PACKAGE_PAT }} ghcr.io
       - name: run docker
         run: |
           docker pull ghcr.io/ankit247/ubuntu_asic:latest
