@@ -15,4 +15,4 @@ jobs:
       - name: run docker
         run: |
           docker pull ghcr.io/ankit247/ubuntu_asic:latest
-          docker run ghcr.io/ankit247/ubuntu_asic --name ubuntu_asic_c echo running docker
+          docker run --name ubuntu_asic_c ghcr.io/ankit247/ubuntu_asic  echo running docker
