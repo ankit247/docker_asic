@@ -8,7 +8,7 @@ RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo
 #mnemosyne installation
 RUN git clone https://github.com/chrpilat/mnemosyne && cd mnemosyne
 RUN mkdir build && cd build
-RUN cmake -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne ..
+RUN which cmake && cmake .. -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne
 RUN make && make install
 RUN cd /temp && mnemosyne --help
 
