@@ -3,11 +3,11 @@ RUN rm -rf /bin/sh && ln -s /bin/bash /bin/sh && echo $0
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make cmake git
 
-RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo 
+RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo && pwd && ls
 
 #mnemosyne installation
-RUN git clone https://github.com/chrpilat/mnemosyne && cd mnemosyne && pwd && ll
-RUN mkdir build && cd build
+RUN git clone https://github.com/chrpilat/mnemosyne && ls && cd mnemosyne
+RUN pwd && ls && mkdir build && cd build
 RUN which cmake && cmake ../. -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne
 RUN make && make install
 RUN cd /temp && mnemosyne --help
