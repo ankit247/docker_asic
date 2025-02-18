@@ -1,5 +1,5 @@
 FROM ubuntu:24.04
-RUN rm -rf /bin/sh && ln -s /bin/bash /bin/sh
+RUN rm -rf /bin/sh && ln -s /bin/bash /bin/sh && echo $0
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make cmake git
 
@@ -10,6 +10,7 @@ RUN git clone https://github.com/chrpilat/mnemosyne && cd mnemosyne
 RUN mkdir build && cd build
 RUN cmake -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne ..
 RUN make && make install
+RUN cd /temp && mnemosyne --help
 
 #Dynamatic installation
 #RUN apt-get install -y clang lld ccache cmake ninja-build python3 openjdk-21-jdk graphviz libboost-regex-dev git curl gzip libreadline-dev
