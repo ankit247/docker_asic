@@ -6,7 +6,7 @@ RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo
 
 #mnemosyne installation
-RUN apt-get install -y pkg-config libxml2-devel glib2-devel libsigc++20-devel glibmm24-devel libxml++-devel glpk-utils glpk-devel libboost-all-dev
+RUN apt-get install -y pkg-config python-networkx libboost-all-dev libxml++2.6-dev glpk-utils
 RUN cd ~/workspace/repo && git clone https://github.com/chrpilat/mnemosyne
 RUN mkdir ~/workspace/repo/mnemosyne/build && cd ~/workspace/repo/mnemosyne/build && cmake ../. -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne && make && make install
 RUN cd /temp && mnemosyne --help
