@@ -1,9 +1,11 @@
 FROM ubuntu:24.04
-RUN apt-get update && apt-get -y upgrade
-RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make git
 RUN rm -rf /bin/sh && ln -s /bin/bash /bin/sh
+RUN apt-get update && apt-get -y upgrade
+RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make cmake git
+
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo 
 
+#mnemosyne installation
 RUN git clone https://github.com/chrpilat/mnemosyne && cd mnemosyne
 RUN mkdir build && cd build
 RUN cmake -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne ..
