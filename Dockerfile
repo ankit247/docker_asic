@@ -6,9 +6,9 @@ RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo 
 
 #mnemosyne installation
-RUN git clone https://github.com/chrpilat/mnemosyne && cd mnemosyne
+RUN git clone https://github.com/chrpilat/mnemosyne && cd mnemosyne && pwd && ll
 RUN mkdir build && cd build
-RUN which cmake && cmake .. -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne
+RUN which cmake && cmake ../. -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne
 RUN make && make install
 RUN cd /temp && mnemosyne --help
 
