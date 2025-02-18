@@ -8,7 +8,7 @@ RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo
 #mnemosyne installation
 RUN apt-get install -y pkg-config libboost-all-dev libxml++2.6-dev glpk-utils libglpk-dev
 RUN cd ~/workspace/repo && git clone https://github.com/chrpilat/mnemosyne
-RUN mkdir ~/workspace/repo/mnemosyne/build && cd ~/workspace/repo/mnemosyne/build && cmake ../. -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne && make && make install
+RUN mkdir ~/workspace/repo/mnemosyne/build && cd ~/workspace/repo/mnemosyne/build && cmake ../. -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne && echo "done cmake" && make && echo "done make" && make install
 RUN cd /temp && mnemosyne --help
 
 #Dynamatic installation
