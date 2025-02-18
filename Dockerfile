@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 RUN rm -rf /bin/sh && ln -s /bin/bash /bin/sh && echo $0
 RUN apt-get update && apt-get -y upgrade
-RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make cmake git
+RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make cmake git vim gvim
 
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo
 
