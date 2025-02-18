@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make git
-RUN su rm -rf /bin/sh && su ln -s /bin/bash /bin/sh
+RUN sudo rm -rf /bin/sh && sudo ln -s /bin/bash /bin/sh
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo 
 
 RUN git clone https://github.com/chrpilat/mnemosyne && cd mnemosyne
