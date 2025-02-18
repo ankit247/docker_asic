@@ -1,7 +1,13 @@
-FROM ubuntu:latest
-RUN apt-get update
-RUN apt-get -y upgrade
+FROM ubuntu:24.04
+RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make git
+RUN su rm -rf /bin/sh && su ln -s /bin/bash /bin/sh
+RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo 
+
+RUN git clone https://github.com/chrpilat/mnemosyne && cd mnemosyne
+RUN mkdir build && cd build
+RUN cmake -DCMAKE_INSTALL_PREFIX=/opt/mnemosyne ..
+RUN make && make install
 
 #Dynamatic installation
 #RUN apt-get install -y clang lld ccache cmake ninja-build python3 openjdk-21-jdk graphviz libboost-regex-dev git curl gzip libreadline-dev
