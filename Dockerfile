@@ -18,7 +18,7 @@ RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/la
 RUN source /etc/profile && sbt -h
 #RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
 RUN cd ~/workspace/repo && git clone --recurse-submodules https://github.com/EPFL-LAP/dynamatic.git
-RUN cd ~/workspace/repo/dynamatic && chmod +x ./build.sh && ./build.sh --release --threads 4
+RUN cd ~/workspace/repo/dynamatic && chmod +x ./build.sh && ./build.sh --release --threads 4 --llvm-parallel-link-jobs 4
 RUN cd ~/workspace/repo/dynamatic/build && ninja check-dynamatic
 
 CMD ["echo", "Welcome to ASIC Design with Docker"]
