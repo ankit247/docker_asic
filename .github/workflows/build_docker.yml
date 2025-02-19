@@ -16,7 +16,6 @@ jobs:
           docker login -u ankit247 -p ${{ secrets.GH_PACKAGE_PAT }} ghcr.io
       - name: docker build
         run: |
-          docker build ./ -t ghcr.io/ankit247/ubuntu_asic:latest
-      - name: docker push
-        run: |
-          docker push ghcr.io/ankit247/ubuntu_asic:latest
+          docker buildx build ./ --push -t ghcr.io/ankit247/ubuntu_asic:latest \
+          --cache-to type=registry,ref=ghcr.io/ankit247/ubuntu_asic-cache \
+          --cache-from type=registry,ref=ghcr.io/ankit247/ubuntu_asic-cache
