@@ -13,9 +13,11 @@ jobs:
         uses: actions/checkout@v4
       - name: docker login
         run: |
-          docker login -u ankit247 -p ${{ secrets.GH_PACKAGE_PAT }} ghcr.io
+          echo ${{ secrets.GH_PACKAGE_PAT }} | docker login ghcr.io -u ankit247 --password-stdin          
       - name: docker build
         run: |
           docker buildx build ./ --push -t ghcr.io/ankit247/ubuntu_asic:latest \
           --cache-to type=registry,ref=ghcr.io/ankit247/ubuntu_asic-cache \
-          --cache-from type=registry,ref=ghcr.io/ankit247/ubuntu_asic-cache
+          --cache-from type=registry,ref=ghcr.io/ankit247/ubuntu_asic-cache && \
+          docker image ls
+          
