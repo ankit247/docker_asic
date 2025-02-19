@@ -1,5 +1,5 @@
 FROM ubuntu:24.04
-RUN echo $0 && rm -rf /bin/sh && ln -s /bin/bash /bin/sh && ps $$ && echo $0 && ll /bin | grep sh
+RUN ls -l /bin/ | grep sh && rm -rf /bin/sh && ln -s /bin/bash /bin/sh  && ls -l /bin | grep sh
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make cmake git vim
 
