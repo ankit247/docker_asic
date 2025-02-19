@@ -16,7 +16,7 @@ RUN apt-get install -y clang lld ccache cmake ninja-build python3 openjdk-21-jdk
 RUN apt-get install -y scala
 #RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup
 RUN cd ~/workspace/repo && git clone --recurse-submodules https://github.com/EPFL-LAP/dynamatic.git
-RUN cd ~/workspace/repo/dynamatic && chmod +x ./build.sh && ./build.sh --release
+RUN cd ~/workspace/repo/dynamatic && chmod +x ./build.sh && ./build.sh --release --threads 2
 RUN cd ~/workspace/repo/dynamatic/build && ninja check-dynamatic
 
 CMD ["echo", "Welcome to ASIC Design with Docker"]
