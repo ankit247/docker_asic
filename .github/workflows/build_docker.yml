@@ -17,7 +17,7 @@ jobs:
       - name: docker build
         run: |
           docker buildx build ./ --push -t ghcr.io/ankit247/ubuntu_asic:latest \
-          --cache-to type=registry,ref=ghcr.io/ankit247/ubuntu_asic-cache \
-          --cache-from type=registry,ref=ghcr.io/ankit247/ubuntu_asic-cache && \
+          --cache-to type=gha,ref=ghcr.io/ankit247/ubuntu_asic-cache \
+          --cache-from type=gha,ref=ghcr.io/ankit247/ubuntu_asic-cache && \
           docker image ls
           
