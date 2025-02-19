@@ -1,14 +1,12 @@
 FROM ubuntu:24.04
-RUN ps $$ && rm -rf /bin/sh && ln -s /bin/bash /bin/sh && ps $$
-RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && yes | ./cs setup
-RUN source ~/.bashrc
-RUN source /etc/profile && sbt -h
-
+RUN echo $0 && rm -rf /bin/sh && ln -s /bin/bash /bin/sh && ps $$ && echo $0 && ll /bin | grep sh
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make cmake git vim
 
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo
-
+RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && yes | ./cs setup
+RUN source ~/.bashrc
+RUN source /etc/profile && sbt -h
 #mnemosyne installation
 RUN apt-get install -y pkg-config libboost-all-dev libxml++2.6-dev glpk-utils libglpk-dev
 RUN cd ~/workspace/repo && git clone https://github.com/chrpilat/mnemosyne
