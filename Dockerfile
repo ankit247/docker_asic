@@ -6,8 +6,8 @@ RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo
 RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && yes | ./cs setup
 ENV PATH="$PATH:/root/.local/share/coursier/bin"
-RUN ls -l /root/.local/share/coursier/bin
-RUN echo $PATH && scala -h && sbt -h
+
+RUN echo $PATH && sbt -h
 
 #mnemosyne installation
 RUN apt-get install -y pkg-config libboost-all-dev libxml++2.6-dev glpk-utils libglpk-dev
