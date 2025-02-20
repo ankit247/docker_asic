@@ -8,7 +8,8 @@ RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/la
 #RUN echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
 #RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
 #ls -l ~/.local/share/coursier/bin 
-RUN source ~/.bashrc && echo $PATH
+RUN source ~/.bashrc && echo $PATH && sbt -h
+RUN sbt -h
 
 #mnemosyne installation
 RUN apt-get install -y pkg-config libboost-all-dev libxml++2.6-dev glpk-utils libglpk-dev
