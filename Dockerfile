@@ -4,11 +4,11 @@ RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-tk curl make cmake git vim
 
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo
-RUN cat ~/.profile && tail ~/.profile &&cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && yes | ./cs setup
+RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && yes | ./cs setup
 #RUN echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
 #RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
 #ls -l ~/.local/share/coursier/bin 
-RUN cat ~/.profile && cat ~/.bashrc && tail ¬/.basrc && source ~/.bashrc && echo $PATH
+RUN source ~/.bashrc && echo $PATH
 
 #mnemosyne installation
 RUN apt-get install -y pkg-config libboost-all-dev libxml++2.6-dev glpk-utils libglpk-dev
