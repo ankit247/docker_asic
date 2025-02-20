@@ -5,7 +5,10 @@ RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-
 
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo
 RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && yes | ./cs setup
-RUN apt-get install -y sbt  && ls -l /bin/ | grep sh && sbt -h
+RUN echo "deb https://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+RUN apt-get update && apt-get install -y sbt && ls -l /bin/ | grep sh && sbt -h
+
 #mnemosyne installation
 RUN apt-get install -y pkg-config libboost-all-dev libxml++2.6-dev glpk-utils libglpk-dev
 RUN cd ~/workspace/repo && git clone https://github.com/chrpilat/mnemosyne
