@@ -5,7 +5,7 @@ RUN apt-get install -y build-essential python3 python3-venv python3-pip python3-
 
 RUN mkdir -p ~/workspace/repo && cd ~/workspace/repo
 RUN cd ~/workspace/ && curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && yes | ./cs setup
-ENV PATH="${PATH}:~/.local/share/coursier/bin"
+ENV PATH="PATH:~/.local/share/coursier/bin"
 RUN ls -l ~/.local/share/coursier/bin && cd ~/.local/share/coursier/bin && pwd
 RUN echo $PATH && sbt -h
 
