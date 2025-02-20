@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: docker login
         run: |
-          docker login -u ankit247 -p ${{ secrets.GH_PACKAGE_PAT }} ghcr.io
+          echo ${{ secrets.GH_PACKAGE_PAT }} | docker login ghcr.io -u ankit247 --password-stdin
       - name: run docker
         run: |
           docker pull ghcr.io/ankit247/ubuntu_asic:latest
-          docker run --name ubuntu_asic_c ghcr.io/ankit247/ubuntu_asic  echo running docker
+          docker run --name ubuntu_asic_c ghcr.io/ankit247/ubuntu_asic  which sbt
